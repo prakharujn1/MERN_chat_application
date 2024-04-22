@@ -1,7 +1,7 @@
 // import path from "path";
 import express from "express";
 import dotenv from "dotenv";
-const app = express();
+
  
 import cookieParser from "cookie-parser";
 
@@ -10,7 +10,7 @@ import messageRoutes from "./routes/message.routes.js";
 import userRoutes from "./routes/user.routes.js";
 
 import connectToMongoDB from "./db/connectToMongoDB.js";
-// import { app, server } from "./socket/socket.js";
+import { app, server } from "./socket/socket.js";
 
 
 // const __dirname = path.resolve();
@@ -34,7 +34,7 @@ app.use("/api/users", userRoutes);
 app.get("/",(req,res)=>{
     res.send("hello")
 })
-app.listen(PORT, () => {
+server.listen(PORT, () => {
 	connectToMongoDB();
 	console.log(`Server Running on port ${PORT}`);
 });
